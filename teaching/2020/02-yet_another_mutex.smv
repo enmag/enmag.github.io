@@ -1,0 +1,33 @@
+MODULE mutex(turn, other_non_idle, id)
+  DEFINE
+    non_idle := state in {waiting, critical};
+  VAR
+    state: {idle, waiting, critical};
+
+  ASSIGN
+    init(state) := idle;
+    next(state) :=
+      case
+        state = idle : {idle, waiting};
+        state = waiting & (!other_non_idle | turn = id) : critical;
+        state = waiting : waiting;
+        state = critical : {critical, idle};
+      esac;
+    next(turn) :=
+      case
+        next(state) = idle : !id;
+        next(state) = critical : id;
+        TRUE : turn;
+      esac;
+
+  FAIRNESS running;
+  FAIRNESS state = idle;
+
+MODULE main
+  VAR
+    turn: boolean;
+    p0: process mutex(turn, p1.non_idle, FALSE);
+    p1: process mutex(turn, p0.non_idle, TRUE);
+
+  CTLSPEC NAME SAFETY := AG !(p0.state=critical & p1.state=critical);
+  CTLSPEC NAME LIVENESS := AG (p0.state=waiting -> AF (p0.state=critical));

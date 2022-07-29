@@ -1,0 +1,74 @@
+MODULE main
+VAR
+  arr : array 0..4 of 1..5;
+  b   : bubblesort(arr);
+
+ASSIGN
+  init(arr[0]) := 4; init(arr[1]) := 1; init(arr[2]) := 3;
+  init(arr[3]) := 2; init(arr[4]) := 5;
+
+
+MODULE bubblesort(arr)
+VAR
+  pc      : { L1, L2, L3, L4, L5, L6, L7 };
+  i       : 1..5;
+  swapped : boolean;
+
+INIT
+  i = 1 & pc = L1 & swapped = FALSE;
+
+ASSIGN
+  next(pc) := case
+    pc = L1 | pc = L5                             : L2;
+    pc = L2 & i < 5                               : L3;
+    pc = L2                                       : L6;
+    pc = L3 & i > 0 & i < 5 & arr[i] < arr[i - 1] : L4;
+    pc = L3 | pc = L4                             : L5;
+    pc = L6 & swapped                             : L1;
+    pc = L6                                       : L7;
+    TRUE                                          : pc;
+  esac;
+
+  next(i) := case
+    pc = L1         : 1;
+    pc = L5 & i < 5 : i + 1;
+    TRUE            : i;
+  esac;
+
+  next(swapped) := case
+    pc = L1 : FALSE;
+    pc = L4 : TRUE;
+    TRUE    : swapped;
+  esac;
+
+-- swap two consequent elements if they are not
+-- correctly sorted relative to one another
+TRANS
+   pc = L4 -> (
+    next(arr[ (i + 4) mod 5 ]) = arr[ (i + 0) mod 5 ] &
+    next(arr[ (i + 0) mod 5 ]) = arr[ (i + 4) mod 5 ] &
+    next(arr[ (i + 1) mod 5 ]) = arr[ (i + 1) mod 5 ] &
+    next(arr[ (i + 2) mod 5 ]) = arr[ (i + 2) mod 5 ] &
+    next(arr[ (i + 3) mod 5 ]) = arr[ (i + 3) mod 5 ]
+  );
+
+-- do not change the array in any other state
+TRANS
+  pc != L4 -> (
+   next(arr[0]) = arr[0] &
+   next(arr[1]) = arr[1] &
+   next(arr[2]) = arr[2] &
+   next(arr[3]) = arr[3] &
+   next(arr[4]) = arr[4]
+  );
+
+-- There exists no path in which the algorithm ends
+LTLSPEC G pc != L7
+
+-- There exists no path in which the algorithm ends
+-- with a sorted array
+LTLSPEC ! F G (arr[0] <= arr[1] &
+               arr[1] <= arr[2] &
+               arr[2] <= arr[3] &
+               arr[3] <= arr[4] &
+               pc = L7)

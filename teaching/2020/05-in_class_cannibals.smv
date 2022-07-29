@@ -1,0 +1,29 @@
+MODULE main
+  VAR
+    miss : 0..3;
+    cann : 0..3;
+    b_miss : 0..2;
+    b_cann : 0..2;
+    boat : {-1, 1};
+
+  TRANS next(boat) != boat -> (b_miss + b_cann > 0 & b_miss + b_cann <= 2);
+  TRANS next(boat) = boat -> (b_miss + b_cann = 0);
+
+  ASSIGN
+    init(miss) := 3;
+    init(cann) := 3;
+    init(b_miss) := 0;
+    init(b_cann) := 0;
+    init(boat) := -1;
+
+    next(miss) := miss + boat * b_miss;
+    next(cann) := cann + boat * b_cann;
+
+  DEFINE
+    safe := miss = 0 | miss = 3 | (miss >= cann & (3 - miss) >= (3 - cann));
+    goal := miss = 0 & cann = 0 & boat = 1;
+
+  LTLSPEC !(safe U goal);
+  CTLSPEC
+
+  INVARSPEC !goal;

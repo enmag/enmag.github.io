@@ -1,0 +1,71 @@
+MODULE main
+VAR
+  arr     : array 0..4 of 1..5;
+  i       : 0..4;
+  swapped : boolean;
+
+DEFINE
+  do_swap   := (i < 4) & arr[ (i + 0) mod 5 ] > arr[ (i + 1) mod 5 ];
+  do_ignore := (i < 4) & arr[ (i + 0) mod 5 ] <= arr[ (i + 1) mod 5 ];
+  do_rewind := (i = 4) & swapped = TRUE;
+  end_state := (i = 4) & swapped = FALSE;
+
+ASSIGN
+  init(arr[0]) := 4; init(arr[1]) := 1; init(arr[2]) := 3;
+  init(arr[3]) := 2; init(arr[4]) := 5;
+
+  init(i) := 0;
+  next(i) := case
+    end_state : i; -- end state
+    TRUE      : (i + 1) mod 5;
+  esac;
+
+  init(swapped) := FALSE;
+  next(swapped) := case
+    (i < 4) & arr[(i+0) mod 5] > arr[(i+1) mod 5]   : TRUE;
+    do_rewind : FALSE;
+    TRUE      : swapped;
+  esac;
+
+-- swap two consequent elements if they are not
+-- correctly sorted relative to one another
+TRANS
+   do_swap -> (
+    next(arr[ (i + 4) mod 5 ]) = arr[ (i + 1) mod 5 ] &
+    next(arr[ (i + 0) mod 5 ]) = arr[ (i + 0) mod 5 ] &
+    next(arr[ (i + 1) mod 5 ]) = arr[ (i + 2) mod 5 ] &
+    next(arr[ (i + 2) mod 5 ]) = arr[ (i + 3) mod 5 ] &
+    next(arr[ (i + 3) mod 5 ]) = arr[ (i + 4) mod 5 ]
+  );
+
+-- perform no action if two consequent elements are already
+-- sorted
+TRANS
+  (do_ignore|do_rewind) -> (
+   next(arr[ (i + 4) mod 5 ]) = arr[ (i + 0) mod 5 ] &
+   next(arr[ (i + 0) mod 5 ]) = arr[ (i + 1) mod 5 ] &
+   next(arr[ (i + 1) mod 5 ]) = arr[ (i + 2) mod 5 ] &
+   next(arr[ (i + 2) mod 5 ]) = arr[ (i + 3) mod 5 ] &
+   next(arr[ (i + 3) mod 5 ]) = arr[ (i + 4) mod 5 ]
+  );
+
+-- perform no action if algorithm has finished
+TRANS
+  (end_state) -> (
+   next(arr[ (i + 0) mod 5 ]) = arr[ (i + 0) mod 5 ] &
+   next(arr[ (i + 1) mod 5 ]) = arr[ (i + 1) mod 5 ] &
+   next(arr[ (i + 2) mod 5 ]) = arr[ (i + 2) mod 5 ] &
+   next(arr[ (i + 3) mod 5 ]) = arr[ (i + 3) mod 5 ] &
+   next(arr[ (i + 4) mod 5 ]) = arr[ (i + 4) mod 5 ]
+  );
+
+-- There exists no path in which the algorithm ends
+LTLSPEC ! F end_state
+
+-- There exists no path in which the algorithm ends
+-- with a sorted array
+LTLSPEC ! F G (arr[0] <= arr[1] &
+               arr[1] <= arr[2] &
+               arr[2] <= arr[3] &
+               arr[3] <= arr[4] &
+               end_state)
