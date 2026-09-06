@@ -1,86 +1,642 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Enrico Magnago Personal Website">
-    <meta name="author" content="Enrico Magnago">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Enrico Magnago Personal Website</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="index.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Enrico Magnago — computer scientist and software developer working on automated reasoning, formal verification and model checking.">
+  <meta name="author" content="Enrico Magnago">
+  <title>Enrico Magnago :: Personal Website</title>
+  <link rel="icon" type="image/svg+xml" href="automaton.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<body>
 
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand d-lg-none" href="#">Enrico Magnago</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">About me<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="publications.html">Publications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="teaching.html">Teaching</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="interests.html">Interests</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="other.html">Other</a>
-          </li>
-        </ul>
+  <!-- Navigation. The mobile menu is filled from the bar's links by main.js. -->
+  <nav class="nav">
+    <div class="wrap nav-bar">
+      <a class="brand" href="#top">
+        <img class="brand-mark" src="automaton.svg" alt="" width="22" height="22">
+        <span class="brand-name">Enrico <span class="brand-last">Magnago</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#interests">Interests</a>
+        <a href="#software">Software</a>
+        <a href="#publications">Publications</a>
+        <a href="#committees">Committees</a>
+        <a href="#education">Education</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#links">Links</a>
       </div>
-    </nav>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <svg class="icon icon-lg"><use href="icons.svg#i-menu"/></svg>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile"></div>
+  </nav>
 
-    <div class="container-fluid" style="margin-top:10px">
-      <div class="row justify-content-md-left">
-        <div class="col-md-auto">
-          <h3>About me</h3>
-          <p>
-            My name is Enrico Magnago, I am a computer scientist and software developer interested in
-            automated reasoning, logic, theoretical computer science and computing in general.
-            <br/>
-          </p>
-          <p>
-            I am a Senior Applied Scientist at <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">Amazon Web Services</a>.
-            I joined AWS in December 2022 and I have been applying Automated Reasoning techniques
-            to Amazon's <a href="https://aws.amazon.com/s3/">Simple Storage Service (S3)</a>.
-          </p>
-          <p>
-            In November 2022 I obtained a Ph.D. in computer science from the University of Trento and Fondazione Bruno Kessler (Embedded Systems unit).
-            My doctoral research focused on formal verification of infinite-state, timed and hybrid systems.
-            In more detail, I was dealing with the problem of (dis)proving temporal properties on such systems, of which software (non)termination is a notable instance.<br/>
-            My <a href="./phd_thesis.pdf">PhD thesis</a> summarises the main contributions of my doctoral research in these fields (<a href="./phd_slides.pdf">slides</a>).
-          </p>
-          <p>
-            My <a href="./master_thesis.pdf">master thesis</a> presents a model checker for <i>Timed Transition Systems</i>: <i>Timed Automata</i> with a symbolic, possibly infinite discrete component.
-          </p>
-          <p>
-            I was also involved in the development of the <a href="http://nusmv.fbk.eu/">NuSMV</a> and <a href="https://es-static.fbk.eu/tools/nuxmv/">nuXmv</a> model checkers and
-            I am a contributor of the <a href="https://github.com/pysmt/pysmt">pySMT</a> library.
-          </p>
-          <p>
-            More information can be found in my <a href="./curriculum_vitae.pdf">curriculum vitae</a>.<br>
-            If you are really interested you can also have a look at the exams I gave during my <a href="./master_degree_exams.pdf">master degree</a> and <a href="./bachelor_degree_exams.pdf">bachelor</a>.
-          </p>
-          <p>
-            Here is my <a href="public_pgp_key.asc">PGP public key</a>.
-          </p>
+  <main class="wrap" id="top">
+
+    <!-- About -->
+    <section id="about" class="hero">
+      <h1 class="tagline">Senior Applied Scientist at Amazon Web Services &middot; automated reasoning &amp; formal verification</h1>
+      <div class="prose lead">
+        <p>
+          I am a computer scientist and software developer.
+          My main areas of expertise are automated reasoning and software.
+          I am curious about system and design verification, logic,
+          (theoretical) computer science and computing in general.
+        </p>
+        <p>
+          I am a Senior Applied Scientist at <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">Amazon Web Services</a>.
+          As part of my work I design, adapt and develop Automated Reasoning
+          techniques to support the development of different components of
+          <a href="https://aws.amazon.com/s3/">Amazon S3</a>.
+        </p>
+        <p>
+          In 2022 I obtained a Ph.D. in computer science from the University of Trento and Fondazione Bruno Kessler.
+          During my PhD I designed, developed and evaluated novel
+          formal verification algorithms for infinite-state, timed and hybrid systems.
+          In particular, my focus was the search for (non-lasso) counterexamples
+          for temporal properties in infinite state, timed and hybrid systems.
+          Software non-termination is a particular instance of this problem and,
+          in fact, many of the benchmarks I considered come from this domain.
+        </p>
+        <div class="chips">
+          <a class="chip" href="./curriculum_vitae.pdf">
+            <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> Curriculum vitae
+          </a>
+          <a class="chip" href="https://www.linkedin.com/in/enrico-magnago-0183b4213">
+            <svg class="icon icon-sm"><use href="icons.svg#i-linkedin"/></svg> LinkedIn
+          </a>
         </div>
       </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- Interests -->
+    <section id="interests">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-search"/></svg>
+        Interests
+      </h2>
+      <div class="grid grid-pair">
+        <div class="card">
+          <span class="card-icon"><span class="glyph" aria-hidden="true">&#8872;</span></span>
+          <h3>Automated Reasoning</h3>
+          <p>
+            My primary research interest is <i>Automated Reasoning</i>:
+            mechanically deciding questions about systems.
+            I like the mathematical clarity these techniques bring when reasoning about designs and systems.
+            I am deeply interested in <i>Formal Verification</i> and
+            <i>Model Checking</i> based on <i>Satisfiability Modulo Theory</i>.
+            These fields address difficult and often undecidable problems.
+            I enjoy the challenge and keep learning and designing
+            new heuristics, algorithms and techniques.
+          </p>
+        </div>
+        <div class="card">
+          <span class="card-icon"><svg class="icon"><use href="automaton.svg#i-automaton"/></svg></span>
+          <h3>Symbolic Model Checking</h3>
+          <p>
+            SAT- and SMT-based symbolic techniques for finite- and infinite-state transition systems, bounded
+            model checking, incremental inductive verification, property directed reachability,
+            liveness-to-safety reductions and abstraction.
+            These are some of the techniques I learned about and worked on
+            while contributing to the NuSMV and nuXmv model checkers.
+            These and other techniques in this area often inspire and guide the
+            initial prototypes I design to address concrete engineering challenges.
+          </p>
+        </div>
+        <div class="card">
+          <span class="card-icon"><svg class="icon"><use href="icons.svg#i-trace"/></svg></span>
+          <h3>Temporal Logics</h3>
+          <p>
+            Temporal logic are an expressive and compact formalism to formally
+            describe the properties of a system.
+            During my PhD I worked on specifying and verifying linear and metric
+            temporal logic properties on infinite, timed and hybrid systems.
+          </p>
+          <div class="chips">
+            <a class="chip" href="https://en.wikipedia.org/wiki/Linear_temporal_logic">LTL</a>
+            <a class="chip" href="https://en.wikipedia.org/wiki/Computation_tree_logic">CTL</a>
+            <a class="chip" href="https://lamport.azurewebsites.net/tla/tla.html">TLA+</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon"><svg class="icon"><use href="icons.svg#i-stopwatch"/></svg></span>
+          <h3>Timed and Hybrid Systems</h3>
+          <p>
+            Systems mixing discrete and continuous behaviour: <i>Timed Transition Systems</i> &mdash;
+            <i>Timed Automata</i> with a symbolic, possibly infinite discrete component &mdash; timed temporal
+            properties over continuous time, and hybrid automata.
+          </p>
+          <div class="chips">
+            <a class="chip" href="https://nuxmv.fbk.eu/">nuXmv</a>
+            <a class="chip" href="https://uppaal.org/">UPPAAL</a>
+            <a class="chip" href="https://hycomp.fbk.eu/">HyCOMP</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon"><svg class="icon"><use href="icons.svg#i-verify"/></svg></span>
+          <h3>Software Verification and Testing</h3>
+          <p>
+            Formal Verification and Testing lay on a spectrum of software verification techniques that
+            help us gain confidence in its correctness.
+            Formal Verification give us mathematically sound proofs of correctness,
+            while testing explores the system in search of faults.
+            An effective verification flow supports the development from
+            the initial design, though each development iteration and maintenance.
+            There must be a clear chain of trust, with clear separation between
+            what is formally proven, under which assumptions and what is instead
+            validated through testing and simulation.
+          </p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/model-checking/kani">Kani</a>
+            <a class="chip" href="https://github.com/verus-lang/verus">Verus</a>
+            <a class="chip" href="https://dafny.org/">Dafny</a>
+            <a class="chip" href="https://github.com/pschanely/CrossHair">CrossHair</a>
+            <a class="chip" href="https://github.com/JetBrains/lincheck">Lincheck</a>
+            <a class="chip" href="https://github.com/nick8325/quickcheck">QuickCheck</a>
+            <a class="chip" href="https://jqwik.net/">jqwik</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-icon"><svg class="icon"><use href="icons.svg#i-terminal"/></svg></span>
+          <h3>Programming Languages</h3>
+          <p>
+            I like programming and I am curious about the different features that languages implement.
+            In general I prefer strongly typed, compiled languages over scripting, interpreted ones.
+            I routinely work with large Java code bases.
+            Lately, I find myself increasingly using Rust,
+            while in the past I used to write more C and C++ code.
+            Python and sh scripting has been quite constant in my career so far.
+            With the growth and adoption of Artificial Intelligence, I find myself able to turn ideas into code faster
+            and with tighter review loops.
+          </p>
+          <div class="chips">
+            <a class="chip" href="https://www.c-language.org/">C</a>
+            <a class="chip" href="https://isocpp.org/">C++</a>
+            <a class="chip" href="https://www.rust-lang.org/">Rust</a>
+            <a class="chip" href="https://dev.java/">Java</a>
+            <a class="chip" href="https://www.python.org/">Python</a>
+            <a class="chip" href="https://en.wikipedia.org/wiki/Shell_script">sh</a>
+            <a class="chip" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs-Lisp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Software -->
+    <section id="software">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-console"/></svg>
+        Software
+      </h2>
+      <div class="grid grid-pair">
+        <a class="card card-wide" href="https://aws.amazon.com/s3/">
+          <span class="card-icon name">S3</span>
+          <h3 class="sr-name">Amazon S3</h3>
+          <p>
+            I am part of the Amazon S3 (Simple Storage Service) team.
+            My primary responsibility is to raise the bar on correctness, security and durability.
+            You can learn about (part of) what I do from our publication at OSDI 2026.
+          </p>
+        </a>
+        <a class="card" href="https://github.com/enmag/F3">
+          <span class="card-icon name">F3</span>
+          <h3 class="sr-name">F3</h3>
+          <p>
+            FindFairFunnel proves the existence of fair (non-lasso) paths in infinite-state transition systems.
+            I developed this tool during my doctoral research.
+          </p>
+        </a>
+        <a class="card" href="https://github.com/pysmt/pysmt">
+          <span class="card-icon name">pySMT</span>
+          <h3 class="sr-name">pySMT</h3>
+          <p>
+            A Python library providing a unified, solver-agnostic API to SMT solvers.
+            I am a contributor to the project.
+          </p>
+        </a>
+        <a class="card" href="https://es-static.fbk.eu/tools/nuxmv/">
+          <span class="card-icon name">nuXmv</span>
+          <h3 class="sr-name">nuXmv</h3>
+          <p>
+            A symbolic model checker for finite- and infinite-state systems.
+            I contributed the support for timed transition systems and timed temporal properties.
+          </p>
+        </a>
+        <a class="card" href="http://nusmv.fbk.eu/">
+          <span class="card-icon name">NuSMV</span>
+          <h3 class="sr-name">NuSMV</h3>
+          <p>
+            The symbolic model checker nuXmv originates from.
+            I was involved in its development during my years at Fondazione Bruno Kessler.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-book-open"/></svg>
+        Publications
+      </h2>
+
+      <div class="pub-list">
+        <div>
+          <h3 class="pub-year">2026</h3>
+          <div class="pub-items">
+            <article class="card pub">
+              <span class="badge">Conference</span>
+              <div class="pub-body">
+                <p class="pub-authors">Nouraldin Jaber, Dongyun Jin, Bernhard Kragl, Enrico Magnago, Gustavo Petri, Thorsten Tarrach, Serdar Tasiran</p>
+                <h3 class="pub-title">High Fidelity Models for Large Scale Stateful Services</h3>
+                <p class="pub-venue">in USENIX Symposium on Operating Systems Design and Implementation (<a href="https://www.usenix.org/conference/osdi26">OSDI</a>) 2026</p>
+                <div class="chips">
+                  <button class="chip" type="button" aria-expanded="false" aria-controls="abs-osdi26">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-eye"/></svg> Abstract
+                  </button>
+                  <a class="chip" href="https://www.usenix.org/system/files/osdi26-jaber.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> pdf
+                  </a>
+                </div>
+                <div class="pub-abstract" id="abs-osdi26" hidden>
+                  <p>The Amazon Simple Storage Service (S3) is 20 years old, hosts more than 500 trillion objects, and averages over 200 million requests per second. Its API must continuously evolve and adapt to new workloads and use cases, sometimes resulting in full re-implementations like the S3 Express One Zone storage class. This highlights two conflicting requirements: ensuring that every change preserves backward compatibility and maintaining a high-paced development environment. We report on our experience combining the use of reference models, in a model-based testing (MBT) style, with abstraction to systematically explore all behaviors of the S3 API. Our approach is grounded in the abstraction of API requests and state elements, enabling systematic validation of all abstract inputs and system states. Through rigorous validation, we produce models that are sufficiently accurate to be used as de facto specifications of S3. Our tool continuously runs in the S3 development and deployment (CI/CD) cycle, validating changes, preventing regressions, and supporting the development of new features.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="pub-year">2022</h3>
+          <div class="pub-items">
+            <article class="card pub">
+              <span class="badge">Journal</span>
+              <div class="pub-body">
+                <p class="pub-authors">Alessandro Cimatti, Alberto Griggio, Enrico Magnago</p>
+                <h3 class="pub-title">LTL falsification in infinite-state systems</h3>
+                <p class="pub-venue">in Journal on Information and Computation 2022</p>
+                <div class="chips">
+                  <button class="chip" type="button" aria-expanded="false" aria-controls="abs-ic22">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-eye"/></svg> Abstract
+                  </button>
+                  <a class="chip" href="./papers/ltl_falsification_in_infinite-state_systems_infocomp2022.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> pdf
+                  </a>
+                  <a class="chip" href="https://doi.org/10.1016/j.ic.2022.104977">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-link"/></svg> doi
+                  </a>
+                </div>
+                <div class="pub-abstract" id="abs-ic22" hidden>
+                  <p>In infinite-state systems not all false LTL properties admit lasso-shaped witnesses. In this work, we propose an automatic approach that presents potentially non-lasso witnesses in an indirect way. The approach is based on two key insights. First, we define the notion of well-founded funnel to describe a source set of states that inevitably reach a destination set. We show that, under suitable conditions, a sequence of funnels ensures the existence of a fair path. Second, we adopt a compositional approach to partition the original system into projections and employ them together with funnels to build the indirect witness. Then, we propose an algorithm that identifies candidate funnels, proves their well-foundedness, and searches for a sequencing order. We experimentally evaluate the approach on examples taken from software, timed and hybrid systems, showing its wide applicability and expressiveness, with an implementation that outperforms various competitor tools.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="pub-year">2021</h3>
+          <div class="pub-items">
+            <article class="card pub">
+              <span class="badge">Conference</span>
+              <div class="pub-body">
+                <p class="pub-authors">Alessandro Cimatti, Alberto Griggio, Enrico Magnago</p>
+                <h3 class="pub-title">Automatic discovery of fair paths in infinite-state transition systems</h3>
+                <p class="pub-venue">in International Symposium on Automated Technology for Verification and Analysis (<a href="https://formal-analysis.com/atva/2021/">ATVA</a>) 2021</p>
+                <div class="chips">
+                  <button class="chip" type="button" aria-expanded="false" aria-controls="abs-atva21">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-eye"/></svg> Abstract
+                  </button>
+                  <a class="chip" href="./papers/automatic_discovery_of_fair_paths_in_infinite-state_transition_systems_extended_atva2021.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> pdf
+                  </a>
+                  <a class="chip" href="./slides/automatic_discovery_of_fair_paths_in_infinite-state_transition_systems_slides.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-slides"/></svg> slides
+                  </a>
+                  <a class="chip" href="https://doi.org/10.1007/978-3-030-88885-5_3">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-link"/></svg> doi
+                  </a>
+                  <a class="chip" href="https://github.com/enmag/F3">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-github"/></svg> github
+                  </a>
+                </div>
+                <div class="pub-abstract" id="abs-atva21" hidden>
+                  <p>Proving existential properties of infinite-state systems (e.g. software non-termination, model checking of hybrid automata) comes with a key challenge: differently from the finite-state case, witnesses may not be in form of lasso-shaped fair paths. In this paper we propose an approach to automatically prove existential properties for infinite state transition systems, presenting witnesses in an indirect way. The approach is based on the notion of well-founded funnel, where a ranking function guarantees that the states in the source set are guaranteed to inevitably reach the destination set. We show that, under suitable conditions, a sequence of funnels ensures the existence of a fair path. We propose an algorithm that, working in an abstract space induced by a set of predicates, identifies candidate funnels, proves their well-foundedness, and searches for a sequencing order. An experimental evaluation shows that the approach is effective in proving existential properties on a wide range of examples taken from both software and LTL model checking, and outperforms various competitor tools.</p>
+                </div>
+              </div>
+            </article>
+            <article class="card pub">
+              <span class="badge">Conference</span>
+              <div class="pub-body">
+                <p class="pub-authors">Alessandro Cimatti, Alberto Griggio, Enrico Magnago</p>
+                <h3 class="pub-title">Proving the existence of fair paths in infinite state systems</h3>
+                <p class="pub-venue">in Conference on Verification, Model Checking, and Abstract Interpretation (<a href="https://popl21.sigplan.org/home/VMCAI-2021">VMCAI</a>) 2021</p>
+                <div class="chips">
+                  <button class="chip" type="button" aria-expanded="false" aria-controls="abs-vmcai21">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-eye"/></svg> Abstract
+                  </button>
+                  <a class="chip" href="./papers/proving_the_existence_of_fair_paths_in_infinite-state_systems_extended_vmcai2021.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> pdf
+                  </a>
+                  <a class="chip" href="./slides/proving_the_existence_of_fair_paths_in_infinite-state_systems_slides.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-slides"/></svg> slides
+                  </a>
+                  <a class="chip" href="https://zenodo.org/record/4271411">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-link"/></svg> artefact
+                  </a>
+                  <a class="chip" href="https://doi.org/10.1007/978-3-030-67067-2_6">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-link"/></svg> doi
+                  </a>
+                </div>
+                <div class="pub-abstract" id="abs-vmcai21" hidden>
+                  <p>In finite-state systems, true existential properties admit witnesses in form of lasso-shaped fair paths. When dealing with the infinite-state case (e.g. software non-termination, model checking of hybrid automata) this is no longer the case. In this paper, we propose a compositional approach for proving the existence of fair paths of infinite-state systems. First, we describe a formal approach to prove the existence of a non-empty under-approximation of the original system that only contains fair paths. Second, we define an automated procedure that, given a set of hints (in form of basic components), searches for a suitable composition proving the existence of a fair path. We experimentally evaluate the approach on examples taken from both software and hybrid systems, showing its wide applicability and expressiveness.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="pub-year">2020</h3>
+          <div class="pub-items">
+            <article class="card pub">
+              <span class="badge">Journal</span>
+              <div class="pub-body">
+                <p class="pub-authors">Alessandro Cimatti, Alberto Griggio, Enrico Magnago, Marco Roveri and Stefano Tonetta</p>
+                <h3 class="pub-title">SMT-Based Satisfiability of First-Order LTL with Event Freezing Functions and Metric Operators</h3>
+                <p class="pub-venue">in Journal on Information and Computation 2020</p>
+                <div class="chips">
+                  <button class="chip" type="button" aria-expanded="false" aria-controls="abs-ic20">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-eye"/></svg> Abstract
+                  </button>
+                  <a class="chip" href="https://www.sciencedirect.com/science/article/pii/S089054011930118X/pdfft?md5=a1a40947b40f4b6eeca7ccc6b911a856&amp;pid=1-s2.0-S089054011930118X-main.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> pdf
+                  </a>
+                  <a class="chip" href="https://doi.org/10.1016/j.ic.2019.104502">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-link"/></svg> doi
+                  </a>
+                </div>
+                <div class="pub-abstract" id="abs-ic20" hidden>
+                  <p>In this paper, we propose to extend First-Order Linear-time Temporal Logic with Past adding two operators &ldquo;at next&rdquo; and &ldquo;at last&rdquo;, which take in input a term and a formula and return the value of the term at the next state in the future or last state in the past in which the formula holds. The new logic, named LTL-EF, can be interpreted with different models of time (including discrete, dense, and super-dense time) and with different first-order theories (&agrave; la Satisfiability Modulo Theories (SMT)). We show that the &ldquo;at next&rdquo; and &ldquo;at last&rdquo; can encode (first-order) MTL<sub>0,&infin;</sub> with counting. We provide rewriting procedures to reduce the satisfiability problem to the discrete-time case (to leverage on the mature state-of-the-art corresponding verification techniques) and to remove the extra functional symbols. We implemented these techniques in the nuXmv model checker enabling the analysis of LTL-EF and MTL<sub>0,&infin;</sub> based on SMT-based model checking. We show the feasibility of the approach experimenting with several non-trivial valid and satisfiable formulas.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="pub-year">2019</h3>
+          <div class="pub-items">
+            <article class="card pub">
+              <span class="badge">Conference</span>
+              <div class="pub-body">
+                <p class="pub-authors">Alessandro Cimatti, Alberto Griggio, Enrico Magnago, Marco Roveri and Stefano Tonetta</p>
+                <h3 class="pub-title">Extending nuXmv with timed transition systems and timed temporal properties</h3>
+                <p class="pub-venue">in Computer Aided Verification (<a href="https://i-cav.org/2019/">CAV</a>) 2019</p>
+                <div class="chips">
+                  <button class="chip" type="button" aria-expanded="false" aria-controls="abs-cav19">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-eye"/></svg> Abstract
+                  </button>
+                  <a class="chip" href="https://link.springer.com/content/pdf/10.1007/978-3-030-25540-4_21.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> pdf
+                  </a>
+                  <a class="chip" href="./slides/timed_nuxmv_slides.pdf">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-slides"/></svg> slides
+                  </a>
+                  <a class="chip" href="https://doi.org/10.1007/978-3-030-25540-4_21">
+                    <svg class="icon icon-sm"><use href="icons.svg#i-link"/></svg> doi
+                  </a>
+                </div>
+                <div class="pub-abstract" id="abs-cav19" hidden>
+                  <p>nuXmv is a well-known symbolic model checker, which implements various state-of-the-art algorithms for the analysis of finite- and infinite-state transition systems and temporal logics. In this paper, we present a new version that supports timed systems and logics over continuous super-dense semantics. The system specification was extended with clocks to constrain the timed evolution. The support for temporal properties has been expanded to include MTL(0,&infin;) formulas with parametric intervals. The analysis is performed via a reduction to verification problems in the discrete-time case. The internal representation of traces has been extended to go beyond the lasso-shaped form, to take into account the possible divergence of clocks. We evaluated the new features by comparing nuXmv with other verification tools for timed automata and MTL(0,&infin;), considering different benchmarks from the literature. The results show that nuXmv is competitive with and in many cases performs better than state-of-the-art tools, especially on validity problems for MTL(0,&infin;).</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Committees -->
+    <section id="committees">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-users"/></svg>
+        Committees
+      </h2>
+      <div class="grid grid-pair grid-top">
+        <div class="card">
+          <h3>Program committees</h3>
+          <ul class="service-list">
+            <li>
+              <span class="service-years">2025</span>
+              <span><strong>CAV</strong> &mdash; International Conference on Computer Aided Verification</span>
+            </li>
+            <li>
+              <span class="service-years">2025&ndash;2026</span>
+              <span><strong>FMCAD</strong> &mdash; International Conference on Formal Methods in Computer-Aided Design</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Artifact evaluation committees</h3>
+          <ul class="service-list">
+            <li>
+              <span class="service-years">2020, 2022&ndash;2025</span>
+              <span><strong>CAV</strong> &mdash; International Conference on Computer Aided Verification</span>
+            </li>
+            <li>
+              <span class="service-years">2025&ndash;2026</span>
+              <span><strong>OOPSLA</strong> &mdash; Conference on Object-Oriented Programming Systems, Languages, and Applications</span>
+            </li>
+            <li>
+              <span class="service-years">2024&ndash;2025</span>
+              <span><strong>ATVA</strong> &mdash; International Symposium on Automated Technology for Verification and Analysis</span>
+            </li>
+            <li>
+              <span class="service-years">2024</span>
+              <span><strong>PLDI</strong> &mdash; Symposium on Programming Language Design and Implementation</span>
+            </li>
+            <li>
+              <span class="service-years">2022</span>
+              <span><strong>FORMATS</strong> &mdash; International Conference on Formal Modeling and Analysis of Timed Systems</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-cap"/></svg>
+        Education
+      </h2>
+      <div class="timeline">
+
+        <div class="card">
+          <div>
+            <p class="timeline-when">Ph.D. &middot; November 2022</p>
+            <p class="timeline-where">University of Trento and Fondazione Bruno Kessler Embedded Systems unit (now <a href="https://fm.fbk.eu/", style="color: black">Formal Methods</a>)</p>
+          </div>
+          <div>
+            <h3>Ph.D. in Computer Science</h3>
+            <div class="prose">
+              <p>
+                My doctoral research focused on formal verification of infinite-state, timed and hybrid systems.
+                I was dealing with the problem of (dis)proving temporal properties on such
+                systems, of which software (non)termination is a notable instance.
+              </p>
+            </div>
+            <div class="chips">
+              <a class="chip" href="./phd_thesis.pdf">
+                <svg class="icon icon-sm"><use href="icons.svg#i-download"/></svg> PhD thesis
+              </a>
+              <a class="chip" href="./phd_slides.pdf">
+                <svg class="icon icon-sm"><use href="icons.svg#i-slides"/></svg> slides
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <p class="timeline-when">M.Sc. &middot; October 2018</p>
+            <p class="timeline-where">University of Trento</p>
+          </div>
+          <div>
+            <h3>Master degree in Computer Science</h3>
+            <div class="prose">
+              <p>
+                Two years of coursework on formal methods, concurrency and distributed systems,
+                computability and computational complexity, machine learning, data mining and knowledge
+                representation, including a term at the University of Edinburgh.
+              </p>
+              <p>
+                My master thesis presents a model checker for <i>Timed Transition Systems</i>:
+                <i>Timed Automata</i> with a symbolic, possibly infinite discrete component.
+              </p>
+            </div>
+            <div class="chips">
+              <a class="chip" href="./master_thesis.pdf">
+                <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> master thesis
+              </a>
+              <a class="chip" href="./master_degree_exams.pdf">
+                <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> exams
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <p class="timeline-when">B.Sc. &middot; July 2016</p>
+            <p class="timeline-where">University of Trento</p>
+          </div>
+          <div>
+            <h3>Bachelor degree in Computer Science</h3>
+            <div class="prose">
+              <p>
+                Three years on the foundations:
+                imperative, object oriented and functional programming,
+                algorithms and data structures, computer architecture,
+                operating systems, networks, databases, software
+                engineering, formal languages and compilers,
+                and the semantics of programming languages,
+                alongside calculus, discrete mathematics,
+                probability and statistics.
+              </p>
+            </div>
+            <div class="chips">
+              <a class="chip" href="./bachelor_degree_exams.pdf">
+                <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> exams
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="chips chips-loose">
+        <a class="chip" href="./curriculum_vitae.pdf">
+          <svg class="icon icon-sm"><use href="icons.svg#i-file"/></svg> More information in my curriculum vitae
+        </a>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-board"/></svg>
+        Teaching
+      </h2>
+      <div class="grid grid-2">
+        <a class="card" href="teaching/fm20.html">
+          <h3>Formal Methods 2020</h3>
+          <p>Teaching assistant: lab lectures on nuXmv, BMC, infinite-state and timed systems, HyCOMP.</p>
+        </a>
+        <a class="card" href="teaching/fm19.html">
+          <h3>Formal Methods 2019</h3>
+          <p>Teaching assistant: lab lectures on Promela and Spin, nuXmv, planning via model checking, HyComp.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links">
+      <h2 class="section-title">
+        <svg class="icon icon-lg"><use href="icons.svg#i-link"/></svg>
+        Miscellaneous Links
+      </h2>
+      <ul class="link-list">
+        <li>
+          <a href="https://github.com/enmag">
+            <svg class="icon"><use href="icons.svg#i-github"/></svg> GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/enrico-magnago-0183b4213">
+            <svg class="icon"><use href="icons.svg#i-linkedin"/></svg> LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="public_pgp_key.asc">
+            <svg class="icon"><use href="icons.svg#i-key"/></svg> PGP public key
+          </a>
+        </li>
+        <li>
+          <a href="https://gruppobandisticoclesiano.it/">
+            <svg class="icon"><use href="icons.svg#i-music"/></svg> Gruppo Bandistico Clesiano
+          </a>
+        </li>
+        <li>
+          <a href="http://coralemonteverdi.it/">
+            <svg class="icon"><use href="icons.svg#i-music"/></svg> Corale Monteverdi
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Copyright &copy; 2026 Enrico Magnago</p>
+      <div class="footer-links">
+        <a href="https://github.com/enmag">GitHub</a>
+        <a href="https://www.linkedin.com/in/enrico-magnago-0183b4213">LinkedIn</a>
+        <a href="./curriculum_vitae.pdf">CV</a>
+      </div>
     </div>
-  </body>
-</head>
+  </footer>
+
+</body>
+</html>

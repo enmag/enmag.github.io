@@ -1,135 +1,202 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Enrico Magnago Personal Website">
-    <meta name="author" content="Enrico Magnago">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Enrico Magnago Personal Website</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="index.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formal Methods 2019 — course material by Enrico Magnago.">
+  <meta name="author" content="Enrico Magnago">
+  <title>Formal Methods 2019 :: Enrico Magnago</title>
+  <link rel="icon" type="image/svg+xml" href="../automaton.svg">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../main.js" defer></script>
+</head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<body>
 
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand d-lg-none" href="#">Enrico Magnago</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">About me <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../publications.html">Publications</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="../teaching.html">Teaching</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../interests.html">Interests</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../other.html">Other</a>
-          </li>
-        </ul>
+  <!-- Navigation. The mobile menu is filled from the bar's links by main.js. -->
+  <nav class="nav">
+    <div class="wrap nav-bar">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../automaton.svg" alt="" width="22" height="22">
+        <span class="brand-name">Enrico <span class="brand-last">Magnago</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#interests">Interests</a>
+        <a href="../index.html#software">Software</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#education">Education</a>
+        <a href="../index.html#teaching">Teaching</a>
+        <a href="../index.html#links">Links</a>
       </div>
-    </nav>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <svg class="icon icon-lg"><use href="../icons.svg#i-menu"/></svg>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile"></div>
+  </nav>
 
-    <div class="container-fluid" style="margin-top:10px">
-      <div class="row justify-content-md-left">
-        <div class="col-md-auto">
-          <h3>Formal Methods 2019</h3>
-          <p style="padding-bottom: 1cm;">
-          Credit for the material of the slides from 01 to 10 goes to previous years teaching assistants.
-          </p>
-          <ol>
-              <li>Promela introduction: 15-03-2019
-                <ul>
-                  <li><a href="./2019/00-course_information.pdf">00-course_information.pdf</a></li>
-                  <li><a href="./2019/01-promela_introduction.pdf">01-promela_introduction.pdf</a>, <a href="./2019/01-examples.zip">01-examples.zip</a></li>
-                </ul>
-              </li>
-              <li>Promela channels: 22-03-2019
-              <ul>
-                  <li><a href="./2019/02-promela_channels.pdf">02-promela_channels.pdf</a>, <a href="./2019/02-examples.zip">02-examples.zip</a>, <a href="./2019/02-exercises.zip">02-exercises.zip</a></li>
-              </ul>
-              </li>
-              <li>Spin LTL model checking: 29-03-2019
-              <ul>
-                  <li><a href="./2019/03-spin_ltl_mc.pdf">03-spin_ltl_mc.pdf</a>, <a href="03-examples.zip">03-examples.zip</a>, <a href="./2019/03-exercise.pml">03-leader_election_exercise.pml</a></li>
-              </ul>
-              </li>
-              <li>Spin exercises: 05-04-2019
-              <ul>
-                  <li><a href="./2019/04-spin_exercises.pdf">04-spin_exercises.pdf</a>, <a href="./2019/04-exercises.zip">04-exercises.zip</a></li>
-              </ul>
-              </li>
+  <main class="wrap">
 
-              <li>nuXmv introduction: 12-04-2019
-              <ul>
-                  <li><a href="./2019/05-nuxmv_introduction.pdf">05-nuxmv_introduction.pdf</a></li>
-              </ul>
-              </li>
-
-              <li>nuXmv model checking: 19-04-2019
-              <ul>
-                  <li><a href="./2019/06-nuxmv_mc.pdf">06-nuxmv_mc.pdf</a>, <a href="./2019/06-exercises.zip">06-exercises.zip</a></li>
-              </ul>
-              </li>
-
-              <li>Using model checkers to find plans: 03-05-2019
-              <ul>
-                  <li><a href="./2019/07-nuxmv_planning.pdf">07-nuxmv_planning.pdf</a>, <a href="./2019/07-examples.zip">07-examples.zip</a>, <a href="./2019/07-exercises.zip">07-exercises.zip</a></li>
-              </ul>
-              </li>
-              <li>nuXmv BMC: 10-05-2019
-              <ul>
-                  <li><a href="./2019/08-nuxmv_bmc.pdf">08-nuxmv_bmc.pdf</a></li>
-              </ul>
-              </li>
-              <li>nuXmv infinite state model checking: 17-05-2019
-              <ul>
-                  <li><a href="./2019/09-nuxmv_infinite_state.pdf">09-nuxmv_infinite_state.pdf</a></li>
-              </ul>
-              </li>
-              <li>nuXmv, model checking timed systems: 21-05-2019
-              <ul>
-                  <li><a href="./2019/11-nuxmv_timed_systems.pdf">11-nuxmv_timed_systems.pdf</a></li>
-              </ul>
-              </li>
-              <li>HyComp, hybrid model checker: 23-05-2019
-              <ul>
-                  <li><a href="./2019/12-hycomp_hybrid_systems.pdf">12-hycomp_hybrid_systems.pdf</a></li>
-              </ul>
-              </li>
-              <li>nuXmv exercises pt1: 24-05-2019
-              <ul>
-                  <li><a href="./2019/10-nuxmv_exercises.pdf">10-nuxmv_exercises.pdf</a>, <a href="./2019/10-exercises.zip">10-exercises.zip</a></li>
-              </ul>
-              </li>
-              <li>nuXmv exercises pt2: 31-05-2019
-              <ul>
-                  <li><a href="./2019/10-nuxmv_exercises.pdf">10-nuxmv_exercises.pdf</a>, <a href="./2019/10-exercises.zip">10-exercises.zip</a></li>
-              </ul>
-              </li>
-              <li>Exam-like exercises: 07-06-2019
-              <ul>
-                  <li><a href="./2019/13-exam_simulation.pdf">13-exam_simulation.pdf</a>, <a href="./2019/13-exercises.zip">13-exercises.zip</a></li>
-              </ul>
-              </li>
-          </ol>
-        </div>
+    <div class="page-head">
+      <a class="back-link" href="../index.html#teaching">
+        <svg class="icon icon-sm"><use href="../icons.svg#i-arrow-left"/></svg> Back to teaching
+      </a>
+      <h1 class="section-title">
+        <svg class="icon icon-lg"><use href="../icons.svg#i-board"/></svg>
+        Formal Methods 2019
+      </h1>
+      <div class="prose">
+        <p>Credit for the material of the slides from 01 to 10 goes to previous years teaching assistants.</p>
+      </div>
+      <div class="chips">
+        <a class="chip" href="https://disi.unitn.it/rseba/DIDATTICA/">
+          <svg class="icon icon-sm"><use href="../icons.svg#i-link"/></svg> Course page
+        </a>
       </div>
     </div>
-  </body>
+
+    <ol class="lectures">
+      <li>
+        <div>
+          <p class="lecture-title">Promela introduction<span class="lecture-date">15-03-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/00-course_information.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 00-course_information.pdf</a>
+            <a class="chip" href="./2019/01-promela_introduction.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 01-promela_introduction.pdf</a>
+            <a class="chip" href="./2019/01-examples.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 01-examples.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">Promela channels<span class="lecture-date">22-03-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/02-promela_channels.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 02-promela_channels.pdf</a>
+            <a class="chip" href="./2019/02-examples.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 02-examples.zip</a>
+            <a class="chip" href="./2019/02-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 02-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">Spin LTL model checking<span class="lecture-date">29-03-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/03-spin_ltl_mc.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 03-spin_ltl_mc.pdf</a>
+            <a class="chip" href="./2019/03-examples.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 03-examples.zip</a>
+            <a class="chip" href="./2019/03-exercise.pml"><svg class="icon icon-sm"><use href="../icons.svg#i-terminal"/></svg> 03-leader_election_exercise.pml</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">Spin exercises<span class="lecture-date">05-04-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/04-spin_exercises.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 04-spin_exercises.pdf</a>
+            <a class="chip" href="./2019/04-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 04-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv introduction<span class="lecture-date">12-04-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/05-nuxmv_introduction.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 05-nuxmv_introduction.pdf</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv model checking<span class="lecture-date">19-04-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/06-nuxmv_mc.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 06-nuxmv_mc.pdf</a>
+            <a class="chip" href="./2019/06-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 06-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">Using model checkers to find plans<span class="lecture-date">03-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/07-nuxmv_planning.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 07-nuxmv_planning.pdf</a>
+            <a class="chip" href="./2019/07-examples.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 07-examples.zip</a>
+            <a class="chip" href="./2019/07-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 07-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv BMC<span class="lecture-date">10-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/08-nuxmv_bmc.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 08-nuxmv_bmc.pdf</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv infinite state model checking<span class="lecture-date">17-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/09-nuxmv_infinite_state.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 09-nuxmv_infinite_state.pdf</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv, model checking timed systems<span class="lecture-date">21-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/11-nuxmv_timed_systems.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 11-nuxmv_timed_systems.pdf</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">HyComp, hybrid model checker<span class="lecture-date">23-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/12-hycomp_hybrid_systems.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 12-hycomp_hybrid_systems.pdf</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv exercises pt1<span class="lecture-date">24-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/10-nuxmv_exercises.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 10-nuxmv_exercises.pdf</a>
+            <a class="chip" href="./2019/10-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 10-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">nuXmv exercises pt2<span class="lecture-date">31-05-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/10-nuxmv_exercises.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 10-nuxmv_exercises.pdf</a>
+            <a class="chip" href="./2019/10-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 10-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="lecture-title">Exam-like exercises<span class="lecture-date">07-06-2019</span></p>
+          <div class="chips">
+            <a class="chip" href="./2019/13-exam_simulation.pdf"><svg class="icon icon-sm"><use href="../icons.svg#i-file"/></svg> 13-exam_simulation.pdf</a>
+            <a class="chip" href="./2019/13-exercises.zip"><svg class="icon icon-sm"><use href="../icons.svg#i-download"/></svg> 13-exercises.zip</a>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Copyright &copy; 2026 Enrico Magnago</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="https://github.com/enmag">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
 </html>

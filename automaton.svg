@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1.6 1.3 20.8 20.8" color="#d11a1a">
+  <!-- The automaton, defined once and used three ways: as the tab favicon and
+       the nav brand mark (this file loaded as an image, where the <use> below
+       draws the symbol and the root viewBox crops to the artwork), and as the
+       Symbolic Model Checking card icon (index.html referencing the symbol).
+       It cannot live in icons.svg with the other symbols: an SVG the browser
+       loads as an image may not fetch external references, so the favicon has
+       to carry its own geometry.
+
+       Hence currentColor plus a colour on the root: loaded as an image nothing
+       supplies a colour, so the root's #d11a1a applies; referenced from a page
+       the root is not cloned, so the card's own colour comes through instead. -->
+  <symbol id="i-automaton" viewBox="0 0 24 24">
+    <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <g fill="currentColor" stroke="none">
+        <circle cx="12" cy="3.6" r="1.7"/>
+        <circle cx="20.4" cy="19.2" r="1.7"/>
+        <circle cx="3.6" cy="19.2" r="1.7"/>
+        <circle cx="12" cy="14" r="1.7"/>
+      </g>
+      <g fill="none">
+        <path d="M13.52 6.42 18.88 16.38M17.2 19.2H6.8M5.12 16.38 10.48 6.42" stroke-width="1.75"/>
+        <path d="M15.68 14.13 18.88 16.38 18.77 12.47M10.3 17.45 6.8 19.2 10.3 20.95M10.37 10.33 10.48 6.42 7.28 8.67" stroke-width="1.15"/>
+      </g>
+    </g>
+  </symbol>
+  <use href="#i-automaton" width="24" height="24"/>
+</svg>
